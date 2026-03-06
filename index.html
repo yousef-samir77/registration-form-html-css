@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wilderness · registration overlay</title>
+  <!-- Font Awesome 6 (free) for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* === your original CSS (slightly adapted to work with new layout) === */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: url('Registration Background.jpg') no-repeat center/cover;
+      /* fallback if image missing: a dark gradient that matches your style */
+      background-color: #1a2a3a;
+      background-image: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;  /* push form to the right, leaving space for text */
+      padding: 0 5%;
+      position: relative;
+    }
+
+    /* overlay that reproduces the photo's text content */
+    .photo-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;  /* so clicks pass through to form if needed */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 3rem 4rem;
+      color: rgba(255, 255, 255, 0.9);
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+
+    /* top navigation row (matches "LOGO HOME ABOUTUS COURSE PRICING GETSTARTED") */
+    .top-nav {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      pointer-events: auto; /* enable if you want links clickable */
+    }
+    .top-nav .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #fff;
+      margin-right: auto;
+    }
+    .top-nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      opacity: 0.9;
+      transition: opacity 0.2s;
+    }
+    .top-nav a:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+    .top-nav .get-started {
+      background: rgba(255,255,255,0.2);
+      padding: 0.5rem 1.5rem;
+      border-radius: 30px;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    /* central welcome message (matches "WelcomeToTheWilderness" + lorem) */
+    .welcome-message {
+      max-width: 600px;
+      margin-bottom: 4rem;
+    }
+    .welcome-message h2 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      color: #fff;
+    }
+    .welcome-message p {
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.6;
+      opacity: 0.9;
+      max-width: 500px;
+    }
+
+    /* bottom credit (matches "designedby @freepik") */
+    .credit {
+      font-size: 0.9rem;
+      opacity: 0.7;
+      letter-spacing: 1px;
+    }
+
+    /* === your form styles (unchanged, but wrapper will be placed on the right) === */
+    .wrapper {
+      width: 420px;
+      background: transparent;
+      border: 2px solid rgba(255, 255, 255, .2);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+      color: #fff;
+      border-radius: 10px;
+      padding: 30px 40px;
+      position: relative;
+      z-index: 10;
+      margin: 2rem 0;
+    }
+
+    .wrapper h1 {
+      font-size: 36px;
+      text-align: center;
+    }
+
+    .wrapper .input-box {
+      position: relative;
+      width: 100%;
+      height: 50px;
+      margin: 30px 0;
+    }
+
+    .input-box input {
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      border: none;
+      outline: none;
+      border: 2px solid rgba(255, 255, 255, .2);
+      border-radius: 40px;
+      font-size: 16px;
+      color: #fff;
+      padding: 25px 45px 20px 20px;
+    }
+
+    .input-box input::placeholder {
+      color: #fff;
+    }
+
+    .input-box i {
+      position: absolute;
+      right: 20px;
+      top: 35%;
+      transform: translateX(-50%);
+      font-size: 20px;
+    }
+
+    .wrapper .remember-forgot {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14.5px;
+      margin: -15px 0 15px;
+    }
+
+    .remember-forgot label input {
+      accent-color: #fff;
+      margin-right: 3px;
+    }
+
+    .remember-forgot a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .remember-forgot a:hover {
+      text-decoration: underline;
+    }
+
+    .wrapper .button {
+      width: 100%;
+      height: 45px;
+      background: #fff;
+      border: none;
+      outline: none;
+      border-radius: 40px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+      cursor: pointer;
+      font-size: 16px;
+      color: #333;
+      font-weight: 600;
+    }
+
+    .wrapper .register-link {
+      font-size: 14.5px;
+      text-align: center;
+      margin: 20px 0 15px;
+    }
+
+    .register-link p a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .register-link p a:hover {
+      text-decoration: underline;
+    }
+
+    /* responsive: stack on smaller screens */
+    @media (max-width: 1000px) {
+      body {
+        justify-content: center;
+        padding: 1rem;
+      }
+      .photo-content {
+        display: none; /* hide text overlay on narrow screens to avoid clutter */
+      }
+      .wrapper {
+        width: 100%;
+        max-width: 420px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Overlay that visually reproduces your "Registration Background.jpg" text -->
+  <div class="photo-content">
+    <div class="top-nav">
+      <span class="logo">LOGO</span>
+      <a href="#">HOME</a>
+      <a href="#">ABOUTUS</a>
+      <a href="#">COURSE</a>
+      <a href="#">PRICING</a>
+      <a href="#" class="get-started">GETSTARTED</a>
+    </div>
+    <div class="welcome-message">
+      <h2>WelcomeToThe<br>Wilderness</h2>
+      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore</p>
+    </div>
+    <div class="credit">designed by @freepik</div>
+  </div>
+
+  <!-- Your original login form (now positioned on the right side) -->
+  <div class="wrapper">
+    <h1>Login</h1>
+    <div class="input-box">
+      <input type="text" placeholder="Username or email" required>
+      <i class="fas fa-user"></i>
+    </div>
+    <div class="input-box">
+      <input type="password" placeholder="Password" required>
+      <i class="fas fa-lock"></i>
+    </div>
+    <div class="remember-forgot">
+      <label><input type="checkbox"> Remember me</label>
+      <a href="#">Forgot password?</a>
+    </div>
+    <button type="submit" class="button">Login</button>
+    <div class="register-link">
+      <p>Don't have an account? <a href="#">Register</a></p>
+    </div>
+  </div>
+</body>
+</html>
