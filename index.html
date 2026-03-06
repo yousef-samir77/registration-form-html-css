@@ -1,12 +1,54 @@
 <!DOCTYPE html>
+<!-- 
+  DOCTYPE tells the browser this is an HTML5 document.
+  It must be the very first line.
+-->
+
 <html lang="en">
+<!-- 
+  <html> is the root element of the page.
+  lang="en" tells search engines and browsers that the page is in English.
+-->
+
 <head>
+  <!-- 
+    The <head> contains information about the page (metadata) that is not displayed.
+    Things like title, character set, links to CSS files, etc. go here.
+  -->
+
   <meta charset="UTF-8">
+  <!-- 
+    This meta tag sets the character encoding to UTF-8.
+    It allows the page to display almost all characters and symbols correctly.
+  -->
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 
+    This meta tag makes the page responsive on mobile devices.
+    width=device-width sets the page width to follow the device's screen width.
+    initial-scale=1.0 sets the initial zoom level when the page loads.
+  -->
+
   <title>Wilderness ·..... registration overlay</title>
+  <!-- 
+    The <title> appears in the browser tab and is used by search engines.
+    It should describe the page content.
+  -->
+
   <!-- Font Awesome 6 (free) for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- 
+    This <link> tag connects to an external CSS file from Font Awesome.
+    It gives us access to hundreds of free icons (like the user and lock icons we use later).
+    The "href" is the web address of the CSS file.
+  -->
+
   <style>
+    /* 
+      The <style> tag contains all the CSS (styling) for the page.
+      Normally, CSS is placed in a separate .css file, but here it's inside the HTML for simplicity.
+      The rules inside define how everything looks: colors, sizes, layout, etc.
+    */
     /* === your original CSS (slightly adapted to work with new layout) === */
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
@@ -224,44 +266,135 @@
       }
     }
   </style>
+  <!-- 
+    End of CSS styles. All the rules above control how the page looks.
+    In a more advanced project, these styles would be in a separate file.
+  -->
 </head>
+
 <body>
+  <!-- 
+    The <body> contains everything that is visible on the page.
+    All the content you see (text, images, forms, etc.) goes here.
+  -->
+
   <!-- Overlay that visually reproduces your "Registration Background.jpg" text -->
+  <!-- 
+    This <div> with class "photo-content" creates a layer on top of the background image.
+    It displays the same text that appears in your background image (logo, navigation, welcome message, credit).
+    It uses absolute positioning to cover the entire page.
+  -->
   <div class="photo-content">
+    
+    <!-- Top navigation bar with logo and links -->
     <div class="top-nav">
+      <!-- 
+        The <span> is used for the logo text because it's an inline element – it won't start a new line.
+        The class "logo" gives it special styling (bigger, bold).
+      -->
       <span class="logo">LOGO</span>
+      
+      <!-- 
+        These are navigation links. The href="#" means they don't go anywhere (placeholder).
+        In a real website, you'd replace "#" with actual links like "home.html".
+      -->
       <a href="#">HOME</a>
       <a href="#">ABOUTUS</a>
       <a href="#">COURSE</a>
       <a href="#">PRICING</a>
+      <!-- 
+        The last link has an extra class "get-started" to make it look like a button.
+      -->
       <a href="#" class="get-started">GETSTARTED</a>
     </div>
+
+    <!-- Central welcome message -->
     <div class="welcome-message">
+      <!-- 
+        <h2> is a heading (level 2). It's big and bold.
+        The <br> tag creates a line break, so "WelcomeToThe" and "Wilderness" appear on separate lines.
+      -->
       <h2>WelcomeToThe<br>Wilderness</h2>
+      <!-- 
+        <p> is a paragraph. It contains the lorem ipsum placeholder text.
+      -->
       <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore</p>
     </div>
+
+    <!-- Bottom credit line -->
     <div class="credit">designed by @freepik</div>
   </div>
 
   <!-- Your original login form (now positioned on the right side) -->
+  <!-- 
+    This is the main form container with class "wrapper".
+    It has the glass effect and contains all the form elements.
+  -->
   <div class="wrapper">
     <h1>Login</h1>
+    <!-- 
+      <h1> is the main heading of the form. It's styled to be centered and large.
+    -->
+
+    <!-- Username/email field with user icon -->
     <div class="input-box">
+      <!-- 
+        The <input> element creates a text field.
+        type="text" means it's a regular text input.
+        placeholder shows light text inside before you type.
+        required means the form can't be submitted without filling this field.
+      -->
       <input type="text" placeholder="Username or email" required>
+      <!-- 
+        <i> tag from Font Awesome – it displays an icon.
+        class="fas fa-user" tells Font Awesome to show a user icon.
+      -->
       <i class="fas fa-user"></i>
     </div>
+
+    <!-- Password field with lock icon -->
     <div class="input-box">
+      <!-- 
+        type="password" hides the characters as you type (dots or asterisks).
+      -->
       <input type="password" placeholder="Password" required>
       <i class="fas fa-lock"></i>
     </div>
+
+    <!-- Remember me and forgot password row -->
     <div class="remember-forgot">
-      <label><input type="checkbox"> Remember me</label>
+      <!-- 
+        <label> groups the checkbox and text together – clicking the text also checks the box.
+      -->
+      <label>
+        <input type="checkbox"> Remember me
+      </label>
+      <!-- 
+        Another placeholder link for "Forgot password?".
+      -->
       <a href="#">Forgot password?</a>
     </div>
+
+    <!-- Login button -->
+    <!-- 
+      <button> creates a clickable button.
+      type="submit" means it will try to submit the form when clicked.
+      class="button" applies styling from CSS.
+    -->
     <button type="submit" class="button">Login</button>
+
+    <!-- Register link at the bottom -->
     <div class="register-link">
       <p>Don't have an account? <a href="#">Register</a></p>
+      <!-- 
+        The <a> tag inside the paragraph is the actual link.
+        href="#" is a placeholder.
+      -->
     </div>
   </div>
+
+  <!-- 
+    End of visible content. The browser will now render everything according to the CSS.
+  -->
 </body>
 </html>

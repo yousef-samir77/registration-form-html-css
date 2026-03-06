@@ -57,8 +57,7 @@ project-folder/
 ## 🙏 Acknowledgements
 
 - Font Awesome for the icons.
-- Google Fonts for Poppins.
-- The design was inspired by a background image from Freepik.
+- The design was made by a background image from Freepik.
 
 ---
 

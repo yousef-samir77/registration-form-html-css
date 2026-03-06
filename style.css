@@ -1,110 +1,140 @@
+/* === 1. IMPORTING A CUSTOM FONT FROM GOOGLE === */
+/* This line brings in the "Poppins" font family with different thicknesses (300 to 900).
+   The font will be downloaded and used on the page. */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:"Poppins","sans-serif";
+/* === 2. UNIVERSAL SELECTOR (applies to EVERY element on the page) === */
+/* The * selector targets all HTML elements (like <div>, <p>, <h1>, etc.) */
+* {
+    margin: 0;        /* Removes default space outside elements */
+    padding: 0;       /* Removes default space inside elements */
+    box-sizing: border-box;  /* Makes width and height include padding and border – helps with sizing */
+    font-family: "Poppins", "sans-serif";  /* Sets the font for all text to Poppins, with a fallback to any sans-serif font */
 }
 
-body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: url('Registration\ Background.jpg') no-repeat;
-   /*  background-size: ; */
-    background-position: center;  
+/* === 3. BODY STYLING (the whole page background) === */
+body {
+    display: flex;            /* Turns the body into a flexbox container – makes aligning children easy */
+    justify-content: center;  /* Centers children horizontally (left/right) */
+    align-items: center;      /* Centers children vertically (up/down) */
+    min-height: 100vh;        /* Makes the body at least as tall as the full screen (viewport height) */
+    background: url('Registration Background.jpg') no-repeat;  /* Sets a background image, no repeating */
+    /* background-size: ; */  /* This line is commented out – it's not active. You could add cover or contain here */
+    background-position: center;  /* Centers the background image */
 }
 
-.wrapper{
-    width: 420px;
-   /*  height: 50px; */
-    background: transparent;
-    border: 2px solid rgba(255, 255, 255, .2);
-    backdrop-filter: blur(20px) ;
-    box-shadow: 0 0 10px rgba(0, 0, 0,.2);
-    color: #fff;
-    border-radius: 10px;
-    padding: 30px 40px;
+/* === 4. THE MAIN FORM CONTAINER (the glass card) === */
+.wrapper {
+    width: 420px;             /* Fixed width for the form */
+    /* height: 50px; */       /* Commented out – not used */
+    background: transparent;  /* No background color – lets the blur effect show through */
+    border: 2px solid rgba(255, 255, 255, .2);  /* Very subtle white border (20% opacity) */
+    backdrop-filter: blur(20px);  /* Blurs everything behind this element – creates the glass effect */
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);   /* Adds a soft shadow around the card */
+    color: #fff;              /* All text inside will be white */
+    border-radius: 10px;      /* Rounds the corners */
+    padding: 30px 40px;       /* Adds space inside: 30px top/bottom, 40px left/right */
 }
 
+/* === 5. THE "LOGIN" HEADING INSIDE THE WRAPPER === */
 .wrapper h1 {
-    font-size: 36px;
-    text-align: center;
+    font-size: 36px;          /* Makes the heading big */
+    text-align: center;       /* Centers the text */
 }
 
-.wrapper .input-box{
-    position: relative;
-    width: 100%;
-    height: 50px;
-   /*  background: salmon;  */
-    margin: 30px 0;
+/* === 6. CONTAINER FOR EACH INPUT FIELD (username, password) === */
+.wrapper .input-box {
+    position: relative;       /* This allows us to place the icon inside it using absolute positioning */
+    width: 100%;              /* Takes full width of the wrapper */
+    height: 50px;             /* Fixed height for the input area */
+    /* background: salmon; */ /* Commented out – was probably for testing */
+    margin: 30px 0;           /* Adds space above and below each input box */
 }
 
+/* === 7. STYLING THE ACTUAL INPUT FIELDS (<input> tags) === */
 .input-box input {
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    border: none;
-    outline: none;
-    border: 2px solid rgba(255, 255, 255,.2);
-    border-radius: 40px;
-    font-size: 16px;
-    color: #fff;
-    padding: 25px 45px 20px 20px;
-}
-.input-box input::placeholder {
-    color: #fff;
-}
-.input-box i{
-    position: absolute;
-    right: 20px;
-    top: 35%;
-    transform: translateX(-50%);
-    font-size: 20px;
+    width: 100%;              /* Full width of its container */
+    height: 100%;             /* Full height (50px from parent) */
+    background: transparent;  /* Makes the input background see-through */
+    border: none;             /* Removes default border */
+    outline: none;            /* Removes the blue outline that appears when you click on it */
+    border: 2px solid rgba(255, 255, 255, .2);  /* Adds a subtle white border (same as wrapper) */
+    border-radius: 40px;      /* Makes the input very rounded (pill shape) */
+    font-size: 16px;          /* Text size inside the input */
+    color: #fff;              /* Text color white */
+    padding: 25px 45px 20px 20px;  /* Space inside: top 25px, right 45px (for icon), bottom 20px, left 20px */
 }
 
-.wrapper .remember-forgot{
-    display: flex;
-    justify-content: space-between;
-    font-size: 14.5px;
-    margin: -15px 0 15px;
+/* === 8. STYLING THE PLACEHOLDER TEXT INSIDE INPUTS === */
+/* The placeholder is the light text that appears before you type (like "Username or email") */
+.input-box input::placeholder {
+    color: #fff;              /* Makes placeholder text white */
 }
-.remember-forgot label input{
-    accent-color: #fff;
-    margin-right: 3px;
+
+/* === 9. STYLING THE ICONS (user and lock) INSIDE INPUT BOXES === */
+.input-box i {
+    position: absolute;       /* Positions the icon relative to the .input-box container */
+    right: 20px;              /* Places it 20px from the right edge */
+    top: 35%;                 /* Moves it down a bit from the top (35% of container height) */
+    transform: translateX(-50%);  /* Shifts it left by half its own width – helps center it exactly */
+    font-size: 20px;          /* Size of the icon */
 }
-.remember-forgot a{
-    color: #fff;
-    text-decoration: none;
+
+/* === 10. ROW FOR "REMEMBER ME" CHECKBOX AND "FORGOT PASSWORD?" LINK === */
+.wrapper .remember-forgot {
+    display: flex;                    /* Uses flexbox to arrange items in a row */
+    justify-content: space-between;   /* Puts one item on left, the other on right */
+    font-size: 14.5px;                /* Slightly smaller text */
+    margin: -15px 0 15px;             /* Top negative margin pulls it up closer to input, bottom margin adds space */
 }
+
+/* === 11. STYLING THE CHECKBOX INSIDE THE LABEL === */
+.remember-forgot label input {
+    accent-color: #fff;       /* Changes the checkbox color to white (instead of default blue) */
+    margin-right: 3px;        /* Adds a tiny space after the checkbox */
+}
+
+/* === 12. STYLING THE "FORGOT PASSWORD?" LINK === */
+.remember-forgot a {
+    color: #fff;              /* White color */
+    text-decoration: none;    /* Removes the underline */
+}
+
+/* === 13. WHEN YOU HOVER OVER THE LINK (mouse over it) === */
 .remember-forgot a:hover {
-    text-decoration: underline;
+    text-decoration: underline;  /* Adds an underline on hover for visual feedback */
 }
+
+/* === 14. STYLING THE LOGIN BUTTON === */
 .wrapper .button {
-    width: 100%;
-    height: 45px;
-    background: #fff;
-    border: none;
-    outline: none;
-    border-radius: 40px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
-    cursor: pointer;
-    font-size: 16px;
-    color: #333;
-    font-weight: 600;
+    width: 100%;              /* Full width of wrapper */
+    height: 45px;             /* Fixed height */
+    background: #fff;         /* White background */
+    border: none;             /* No border */
+    outline: none;            /* No outline when clicked */
+    border-radius: 40px;      /* Rounded corners (pill shape) */
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);  /* Very light shadow */
+    cursor: pointer;          /* Changes the mouse cursor to a hand when hovering */
+    font-size: 16px;          /* Text size */
+    color: #333;              /* Dark gray text (contrasts with white background) */
+    font-weight: 600;         /* Makes text a bit bold */
 }
-.wrapper .register-link{
-    font-size: 14.5px;
-    text-align: center;
-    margin: 20px 0 15px;
+
+/* === 15. CONTAINER FOR THE "REGISTER" LINK AT THE BOTTOM === */
+.wrapper .register-link {
+    font-size: 14.5px;        /* Small text */
+    text-align: center;       /* Centers the text */
+    margin: 20px 0 15px;      /* Space above and below */
 }
-.register-link p a{
-    color: #fff;
-    text-decoration: none;
-    font-weight: 600;
+
+/* === 16. STYLING THE REGISTER LINK ITSELF === */
+.register-link p a {
+    color: #fff;              /* White color */
+    text-decoration: none;    /* No underline */
+    font-weight: 600;         /* Slightly bold */
 }
-.register-link p a:hover{
-    text-decoration: underline;
+
+/* === 17. HOVER EFFECT FOR THE REGISTER LINK === */
+.register-link p a:hover {
+    text-decoration: underline;  /* Underline appears when you hover */
 }
