@@ -44,13 +44,14 @@ project-folder/
 ├── style.css                    # All CSS styles
 ├── Registration Background.jpg  # Background image ( you need to add it)
 └── README.md                    # Project documentation
+```
 ## 💡 Future Improvements
 
 - Add actual form validation with JavaScript.
 - Make the navigation links functional.
 - Connect to a backend for real authentication.
 - Add more interactive hover effects.
-```
+
 ## 🙏 Acknowledgements
 
 - Font Awesome for the icons.
