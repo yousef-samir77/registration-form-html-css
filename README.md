@@ -37,23 +37,20 @@ A beginner-friendly HTML/CSS project that creates a beautiful login page with a 
 3. Open `index.html` in any modern web browser.
 
 > **Note:** If you don't have the exact background image, the page includes a fallback gradient so it still looks nice.
-
-## 📁 File Structure
-
+```plaintext
 project-folder/
 │
 ├── index.html                   # Main HTML file
 ├── style.css                    # All CSS styles
-├── Registration Background.jpg  # Background image (you need to add it)
+├── Registration Background.jpg  # Background image ( you need to add it)
 └── README.md                    # Project documentation
-
 ## 💡 Future Improvements
 
 - Add actual form validation with JavaScript.
 - Make the navigation links functional.
 - Connect to a backend for real authentication.
 - Add more interactive hover effects.
-
+```
 ## 🙏 Acknowledgements
 
 - Font Awesome for the icons.
