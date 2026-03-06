@@ -39,13 +39,13 @@ A beginner-friendly HTML/CSS project that creates a beautiful login page with a 
 > **Note:** If you don't have the exact background image, the page includes a fallback gradient so it still looks nice.
 
 ## 📁 File Structure
+
 project-folder/
 │
-├── index.html # Main HTML file
-├── style.css # All CSS styles
-├── Registration Background.jpg # Background image (you need to add it)
-└── README.md # Project documentation
-
+├── index.html                   # Main HTML file
+├── style.css                    # All CSS styles
+├── Registration Background.jpg  # Background image (you need to add it)
+└── README.md                    # Project documentation
 
 ## 💡 Future Improvements
 
